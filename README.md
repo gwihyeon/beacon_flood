@@ -10,4 +10,4 @@ pip3 install randmac
 ## Usage
 python3 beacon_flood.py [interface_name] [ssid_list_file_name]  
 ex) python3 beacon_flood.py wlan0 ssid_list.txt  
-![beacon_flood](./beacon_flood.png)
+![beacon_flood](./beacon_flood.png){: width="50%" height="50%"}
